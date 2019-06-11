@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49c7393a-685d-4a38-9bf3-83608448cf04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/posts/api/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/posts/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/posts/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/posts/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/posts/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/posts/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/posts/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/posts/tests/test_post_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/posts/tests/test_post_api.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/posts/tests/test_post_api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="134" column="47" selection-start-line="134" selection-start-column="47" selection-end-line="134" selection-end-column="47" />
+            <state relative-caret-position="462">
+              <caret line="172" column="55" selection-start-line="172" selection-start-column="55" selection-end-line="172" selection-end-column="55" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
               </folding>
@@ -357,8 +351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/posts/tests/test_post_api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="134" column="47" selection-start-line="134" selection-start-column="47" selection-end-line="134" selection-end-column="47" />
+        <state relative-caret-position="462">
+          <caret line="172" column="55" selection-start-line="172" selection-start-column="55" selection-end-line="172" selection-end-column="55" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
           </folding>

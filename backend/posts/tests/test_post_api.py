@@ -134,3 +134,40 @@ class PrivatePostAPITest(TestCase):
         res = self.client.get(url)
         serializer = PostCreateSerializer(post)
         self.assertEqual(res.data, serializer.data)
+
+
+    # Update View
+    def test_partial_update_post(self):
+        post = sample_post(user=self.user, n=1)
+
+        payload = {
+            # 'content': 'AWESOME CONTENT',
+            'title': 'New New title',
+            # 'slug': 'new-new-slug'
+        }
+
+        url = detail_url(post.id)
+
+        self.client.patch(url, payload)
+        post.refresh_from_db()
+
+        self.assertEqual(post.title, payload['title'])
+
+
+    def test_full_update_post(self):
+        post = sample_post(user=self.user, n=1)
+
+        payload = {
+            'content': 'AWESOME CONTENT',
+            'title': 'New New title',
+            'slug': 'new-new-slug'
+        }
+
+        url = detail_url(post.id)
+
+        self.client.patch(url, payload)
+        post.refresh_from_db()
+
+        self.assertEqual(post.title, payload['title'])
+        self.assertEqual(post.slug, payload['slug'])
+        self.assertEqual(post.content, payload['content'])
