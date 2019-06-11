@@ -72,7 +72,6 @@ class PostAPITest(TestCase):
 
 
 
-
 class PrivatePostAPITest(TestCase):
 
     def setUp(self):
@@ -126,6 +125,20 @@ class PrivatePostAPITest(TestCase):
 
 
     # Detail View
+    def test_auth_required(self):
+        post = sample_post(user=self.user, n=1)
+        url = detail_url(post.id)
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+
+    def test_detail_view_incorrect_permissions(self):
+        user2 = get_user_model().objects.create_user('test2', 'zaza1234')
+        post = sample_post(user=user2, n=1)
+        url = detail_url(post.id)
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+
+
     def test_view_post_detail(self):
         '''  viewing the post detail  '''
         post = sample_post(user=self.user, n=1)
@@ -141,9 +154,7 @@ class PrivatePostAPITest(TestCase):
         post = sample_post(user=self.user, n=1)
 
         payload = {
-            # 'content': 'AWESOME CONTENT',
-            'title': 'New New title',
-            # 'slug': 'new-new-slug'
+            'title': 'New New title'
         }
 
         url = detail_url(post.id)
@@ -171,3 +182,13 @@ class PrivatePostAPITest(TestCase):
         self.assertEqual(post.title, payload['title'])
         self.assertEqual(post.slug, payload['slug'])
         self.assertEqual(post.content, payload['content'])
+
+
+    # DELETE VIEW
+    # def test_delete_post(self):
+    #     post = sample_post(user=self.user, n=1)
+    #     url = detail_url(post.id)
+    #     self.client.delete(url)
+    #     post.refresh_from_db()
+    #
+    #     self.assertEqual(len(Post.objects.all()), 0)
