@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from backend.posts.models import Post
-from backend.posts.api.serializers import PostSerializer
+from backend.posts.api.serializers import PostSerializer, PostCreateSerializer
 
 
 POST_URL = reverse('posts:post_list')
@@ -71,6 +71,8 @@ class PostAPITest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
+
+
 class PrivatePostAPITest(TestCase):
 
     def setUp(self):
@@ -123,45 +125,12 @@ class PrivatePostAPITest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
 
+    # Detail View
+    def test_view_post_detail(self):
+        '''  viewing the post detail  '''
+        post = sample_post(user=self.user, n=1)
 
-
-#
-# class PostPrivateAPITest(TestCase):
-#
-#     def setUp(self):
-#         self.client = APIClient()
-#         self.user = get_user_model().objects.create_user('test', 'zaza1234')
-#         self.client.force_authenticate(self.user)
-#
-#
-#     # CREATE VIEW
-#     def test_create_basic_post(self):
-#         payload = {
-#             'content': 'AWESOME CONTENT WILL BE HERE',
-#             'title': 'New title',
-#             'slug': 'new-title'
-#         }
-#
-#         res = self.client.post(CREATE_URL, payload)
-#         print(res)
-#         # self.assertEqual(res.status_code, status.HTTP_201_CREATED)
-#         # post = Post.objects.get(id=res.data['id'])
-#         # for key in payload.keys():
-#         #     self.assertEqual(payload[key], getattr(post, key))
-#
-
-
-
-
-    #
-    # # Detail View
-    # def test_view_post_detail(self):
-    #     '''  viewing the post detail  '''
-    #     post = sample_post(user=self.user, n=1)
-    #
-    #     url = detail_url(post.id)
-    #     res = self.client.get(url)
-    #
-    #     serializer = PostSerializer(post)
-    #
-    #     self.assertEqual(res.data, serializer.data)
+        url = detail_url(post.id)
+        res = self.client.get(url)
+        serializer = PostCreateSerializer(post)
+        self.assertEqual(res.data, serializer.data)

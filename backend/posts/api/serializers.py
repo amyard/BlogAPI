@@ -11,7 +11,8 @@ class PostSerializer(serializers.ModelSerializer):
 
 class PostCreateSerializer(serializers.ModelSerializer):
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Post
-        fields = ['id', 'title', 'slug','content', 'author', 'created']
+        fields = ['id', 'title', 'slug','content', 'author', 'created', 'modified']
         read_only_fields = ('id',)
