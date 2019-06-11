@@ -22,12 +22,19 @@ def sample_post(user, n, **params):
     return Post.objects.create(author=user, **defaults)
 
 
+def detail_url(post_id):
+    '''  RETURN POST DETAIL URL   '''
+    return reverse('posts:post_detail', args=[post_id])
+
+
+
 class PostAPITest(TestCase):
 
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user('test', 'zaza1234')
 
+    # List View
     def test_retrive_post(self):
         '''   Retrieve all posts  '''
         sample_post(user=self.user, n=1)
@@ -56,3 +63,15 @@ class PostAPITest(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(posts.count(), 1)
+
+    # Detail View
+    def test_view_post_detail(self):
+        '''  viewing the post detail  '''
+        post = sample_post(user=self.user, n=1)
+
+        url = detail_url(post.id)
+        res = self.client.get(url)
+
+        serializer = PostSerializer(post)
+
+        self.assertEqual(res.data, serializer.data)
