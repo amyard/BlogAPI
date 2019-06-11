@@ -21,6 +21,7 @@ from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/posts/', include('backend.posts.api.urls')),
     path('media/<path>', serve,{'document_root': settings.MEDIA_ROOT}),
 ]
 

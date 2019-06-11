@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="210">
+          <list size="211">
             <item index="0" class="java.lang.String" itemvalue="numba" />
             <item index="1" class="java.lang.String" itemvalue="greenlet" />
             <item index="2" class="java.lang.String" itemvalue="Babel" />
@@ -215,6 +215,7 @@
             <item index="207" class="java.lang.String" itemvalue="colorama" />
             <item index="208" class="java.lang.String" itemvalue="ply" />
             <item index="209" class="java.lang.String" itemvalue="openpyxl" />
+            <item index="210" class="java.lang.String" itemvalue="django-model-utils" />
           </list>
         </value>
       </option>
