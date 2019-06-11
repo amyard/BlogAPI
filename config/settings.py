@@ -46,9 +46,12 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
+    'rest_framework',
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'backend.users.apps.UsersConfig',
+]
 
 THIRD_PARTY_APPS = []
 
