@@ -17,6 +17,7 @@ import environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/backend'
 
 ROOT_DIR = environ.Path(__file__) - 2
+
 env = environ.Env(
     DJANGO_DEBUG=(bool, True),
     DJANGO_SECRET_KEY=(str, 'bq+pffgu4bqn$ahie$wsplkpy0&k5eo8%x0l$c#q_j*lpeik(0'),
@@ -51,6 +52,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     'backend.users.apps.UsersConfig',
+    'backend.posts.apps.PostsConfig',
 ]
 
 THIRD_PARTY_APPS = []
@@ -127,7 +129,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -136,5 +138,5 @@ STATICFILES_DIRS = (
 )
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 MEDIA_URL = '/media/'
